@@ -6,6 +6,20 @@ import ItemPage from "./ItemPage.js";
 import {items} from "./static-data.js";
 import CartPage from "./CartPage";
 
+const summarizeCart = (cart) => {
+  const groupItems = cart.reduce((summary, item) => {
+    summary[item.id] = summary[item.id] || {
+      ...item,
+      count: 0
+    }
+    summary[item.id].count++;
+
+    return summary;
+  }, {});
+
+  return Object.values(groupItems);
+};
+
 const App = () => {
   const [activeTab, setActiveTab] = useState('items');
   const [cart, setCart] = useState([]);
@@ -20,20 +34,19 @@ const App = () => {
         activeTab={activeTab}
         onTabChange={setActiveTab}
       />
-      {/* components are have self closing tags */}
       <main className="App-content">
-        <Content tab={activeTab} onAddToCart={addToCart}/>
+        <Content tab={activeTab} onAddToCart={addToCart} cart={summarizeCart(cart)}/>
       </main>
     </div>
   );
-}
+};
 
-const Content = ({tab, onAddToCart}) => {
+const Content = ({tab, onAddToCart, cart}) => {
   switch (tab) {
     case 'items':
     return <ItemPage items={items} onAddToCart={onAddToCart}/>;
     case 'cart':
-    return <span>the cart</span>;
+    return <CartPage items={cart}/>;
     default:
       break;
   }
