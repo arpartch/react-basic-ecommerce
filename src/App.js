@@ -9,6 +9,10 @@ const App = () => {
   const [activeTab, setActiveTab] = useState('items');
   const [cart, setCart] = useState([]);
 
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
   return (
     <div className="App">
       <Nav
@@ -17,16 +21,16 @@ const App = () => {
       />
       {/* components are have self closing tags */}
       <main className="App-content">
-        <Content tab={activeTab}/>
+        <Content tab={activeTab} onAddToCart={addToCart}/>
       </main>
     </div>
   );
 }
 
-const Content = ({tab}) => {
+const Content = ({tab, onAddToCart}) => {
   switch (tab) {
     case 'items':
-    return <ItemPage items={items}/>;
+    return <ItemPage items={items} onAddToCart={onAddToCart}/>;
     case 'cart':
     return <span>the cart</span>;
     default:
