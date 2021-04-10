@@ -4,6 +4,7 @@ import Nav from "./Nav.js";
 import Item from "./Item.js"
 import ItemPage from "./ItemPage.js";
 import {items} from "./static-data.js";
+import CartPage from "./CartPage";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('items');
