@@ -13,7 +13,7 @@ function ItemPage({items}) {
   );
 }
 
-ItemPAge.propTypes = {
+ItemPage.propTypes = {
   items: PropTypes.array.isRequired
 };
 
