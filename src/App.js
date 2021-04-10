@@ -2,9 +2,12 @@ import React, {useState} from "react";
 import "./style.css";
 import Nav from "./Nav.js";
 
+import ItemPage from "./ItemPage.js";
+import {items} from "./static-data.js";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('items');
+
   return (
     <div className="App">
       <Nav
@@ -22,7 +25,7 @@ const App = () => {
 const Content = ({tab}) => {
   switch (tab) {
     case 'items':
-    return <span>the items</span>;
+    return <ItemPage items={items}/>;
     case 'cart':
     return <span>the cart</span>;
     default:
