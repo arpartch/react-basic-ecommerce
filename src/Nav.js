@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Nave = () => {
+const Nav = () => {
   return (
     <nav className="App-nav">
       <ul>
