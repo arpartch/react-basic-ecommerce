@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./style.css";
 import Nav from "./Nav.js";
-
+import Item from "./Item.js"
 import ItemPage from "./ItemPage.js";
 import {items} from "./static-data.js";
 
